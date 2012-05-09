@@ -11,6 +11,7 @@
 #import "Chord.h"
 #import "UISequenceView.h"
 #import "UITouchView.h"
+#import "BeatViewController.h"
 
 @interface ViewController : UIViewController
 { 
@@ -25,6 +26,9 @@
 @property (nonatomic, retain) IBOutlet UIButton *popButton;
 @property (nonatomic, retain) UIPopoverController *popoverController;
 @property (nonatomic, retain) id detailItem;
+@property (weak, nonatomic) IBOutlet UITableView *beatsTableView;
+@property (weak, nonatomic) IBOutlet UITableView *instrumentsTableView;
+@property (weak, nonatomic) IBOutlet UISwitch *metroSwitch;
 
 @property (strong) AVAudioPlayer *beatPlayer;
 @property (nonatomic, strong) IBOutlet UILabel *feedbackLabel;
@@ -86,6 +90,7 @@
 
 // IBOutlet is needed to associate properties in your application with components in Interface Builder (IB)
 -(IBAction)showVariations:(id)sender;
+-(IBAction)metroSwitched:(id)sender;
 -(IBAction)buttonTriggered:(id)sender;
 -(IBAction)sliderChanged:(id)sender;
 -(IBAction)beatButtonTriggered:(id)sender;

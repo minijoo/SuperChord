@@ -22,6 +22,9 @@
 		E2107AEC1544AAA300859D02 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2107AEB1544AAA300859D02 /* AudioToolbox.framework */; };
 		E219112B1559990800EF9C4F /* VariationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21911291559990800EF9C4F /* VariationViewController.m */; };
 		E219112C1559990800EF9C4F /* VariationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E219112A1559990800EF9C4F /* VariationView.xib */; };
+		E2730D86155A2E86000EAB04 /* BeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2730D85155A2E86000EAB04 /* BeatViewController.m */; };
+		E2730D89155A3020000EAB04 /* FourFourBeats.m in Sources */ = {isa = PBXBuildFile; fileRef = E2730D88155A3020000EAB04 /* FourFourBeats.m */; };
+		E2730D8C155A302C000EAB04 /* ThreeFourBeats.m in Sources */ = {isa = PBXBuildFile; fileRef = E2730D8B155A302C000EAB04 /* ThreeFourBeats.m */; };
 		E2C915E81529524B0016B932 /* Chord.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C915E71529524B0016B932 /* Chord.m */; };
 		E2C915EB15295FF90016B932 /* UISequenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C915EA15295FF90016B932 /* UISequenceView.m */; };
 		E2D2A45F1547487700E83C43 /* crsynth.dlsc in Resources */ = {isa = PBXBuildFile; fileRef = E2D2A4571547487700E83C43 /* crsynth.dlsc */; };
@@ -55,6 +58,12 @@
 		E21911281559990800EF9C4F /* VariationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariationViewController.h; sourceTree = "<group>"; };
 		E21911291559990800EF9C4F /* VariationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariationViewController.m; sourceTree = "<group>"; };
 		E219112A1559990800EF9C4F /* VariationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VariationView.xib; sourceTree = "<group>"; };
+		E2730D84155A2E86000EAB04 /* BeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeatViewController.h; sourceTree = "<group>"; };
+		E2730D85155A2E86000EAB04 /* BeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeatViewController.m; sourceTree = "<group>"; };
+		E2730D87155A3020000EAB04 /* FourFourBeats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourFourBeats.h; sourceTree = "<group>"; };
+		E2730D88155A3020000EAB04 /* FourFourBeats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourFourBeats.m; sourceTree = "<group>"; };
+		E2730D8A155A302C000EAB04 /* ThreeFourBeats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeFourBeats.h; sourceTree = "<group>"; };
+		E2730D8B155A302C000EAB04 /* ThreeFourBeats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeFourBeats.m; sourceTree = "<group>"; };
 		E2C915E61529524B0016B932 /* Chord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chord.h; sourceTree = "<group>"; };
 		E2C915E71529524B0016B932 /* Chord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chord.m; sourceTree = "<group>"; };
 		E2C915E915295FF90016B932 /* UISequenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISequenceView.h; sourceTree = "<group>"; };
@@ -131,6 +140,12 @@
 				E2C915E71529524B0016B932 /* Chord.m */,
 				3609AD1F14E1D8C50049DE07 /* ViewController.h */,
 				3609AD2014E1D8C50049DE07 /* ViewController.m */,
+				E2730D84155A2E86000EAB04 /* BeatViewController.h */,
+				E2730D85155A2E86000EAB04 /* BeatViewController.m */,
+				E2730D8A155A302C000EAB04 /* ThreeFourBeats.h */,
+				E2730D8B155A302C000EAB04 /* ThreeFourBeats.m */,
+				E2730D87155A3020000EAB04 /* FourFourBeats.h */,
+				E2730D88155A3020000EAB04 /* FourFourBeats.m */,
 				E2C915E915295FF90016B932 /* UISequenceView.h */,
 				E2C915EA15295FF90016B932 /* UISequenceView.m */,
 				E21911281559990800EF9C4F /* VariationViewController.h */,
@@ -260,6 +275,9 @@
 				E2C915EB15295FF90016B932 /* UISequenceView.m in Sources */,
 				E20DE5C4152B5B6900270C99 /* UITouchView.m in Sources */,
 				E219112B1559990800EF9C4F /* VariationViewController.m in Sources */,
+				E2730D86155A2E86000EAB04 /* BeatViewController.m in Sources */,
+				E2730D89155A3020000EAB04 /* FourFourBeats.m in Sources */,
+				E2730D8C155A302C000EAB04 /* ThreeFourBeats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

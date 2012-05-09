@@ -16,6 +16,9 @@
 #define BOX_HEIGHT 50
 
 @implementation ViewController
+@synthesize beatsTableView;
+@synthesize instrumentsTableView;
+@synthesize metroSwitch;
 @synthesize popButton, popoverController, detailItem;
 
 @synthesize beatPlayer, feedbackLabel, volumeLabel, chordBankView, seqView, touchView;
@@ -60,9 +63,24 @@
     [popover presentPopoverFromRect:popoverRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
-- (IBAction) buttonTouched:(id) sender
+-(void) playTick:(id) nothing 
 {
-    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+	appDelegate.api->setChannelMessage (appDelegate.handle, 0x00, 0x91, 90, 40);
+    [self performSelector:@selector(playTick:) withObject:nil afterDelay:.9];
+}
+
+- (IBAction) metroSwitched:(id) sender
+{
+    NSLog(@"Metro switched");
+    if(metroSwitch.on) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.api->setChannelMessage (appDelegate.handle, 0x00, 0x91, 90, 40);
+        [self performSelector:@selector(playTick:) withObject:nil afterDelay:.9];
+    }
+    else {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    }
 }
 
 - (IBAction) buttonDragged:(id) sender withEvent:(UIEvent *) event
@@ -284,7 +302,7 @@
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
-{
+{    
     numTaps = 0; exited = YES; currentBox = -1;
     for (int i=0; i<6; i++) box[i] = NO;
     NSLog(@"loaded");
@@ -379,6 +397,9 @@
 - (void)viewDidUnload
 {
     //[self setPopOver:nil];
+    [self setBeatsTableView:nil];
+    [self setInstrumentsTableView:nil];
+    [self setMetroSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
