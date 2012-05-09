@@ -12,6 +12,26 @@
 
 @synthesize title, variation, number;
 
+static NSString *titleArchiveKey = @"title";
+static NSString *variationArchiveKey = @"variation";
+static NSString *numberArchiveKey = @"number";
+
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super init];
+    if (self != nil) {
+        title = [coder decodeObjectForKey:titleArchiveKey];
+        variation = [coder decodeObjectForKey:variationArchiveKey];
+        number = [coder decodeIntegerForKey:numberArchiveKey];
+    }
+    return self;
+}   
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:title forKey:titleArchiveKey];
+    [coder encodeObject:variation forKey:variationArchiveKey];
+    [coder encodeInteger:number forKey:numberArchiveKey];
+}
+
 -(id)initWithChordNumber:(int) chordNumber andVariation:(NSString *)var
 {
     self.number = chordNumber;

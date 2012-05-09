@@ -7,8 +7,6 @@
 //
 
 #import "BeatViewController.h"
-#import "FourFourBeats.h"
-#import "ThreeFourBeats.h"
 
 @implementation BeatViewController
 
@@ -33,8 +31,23 @@
 
 - (void)viewDidLoad
 {
+    checkedSection = 0;
+    checkedRow = 0;
+    
+    listOfFourFour = [[NSMutableArray alloc] init];
+    [listOfFourFour addObject:@"Rock"];
+    [listOfFourFour addObject:@"R&B"];
+    [listOfFourFour addObject:@"Hip Hop"];
+    [listOfFourFour addObject:@"Funk"];
+    
+    listOfThreeFour = [[NSMutableArray alloc] init];
+    [listOfThreeFour addObject:@"Rock"];
+    [listOfThreeFour addObject:@"R&B"];
+    [listOfThreeFour addObject:@"Hip Hop"];
+    [listOfThreeFour addObject:@"Funk"];
+    
+    NSLog(@"VIEW DID LOAD");
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -44,12 +57,9 @@
 
 - (void)viewDidUnload
 {
-    beatTypes = [[NSMutableArray alloc] init];
-    [beatTypes addObject:@"4/4"];
-    [beatTypes addObject:@"3/4"];
-    
+   
     [super viewDidUnload];
-    self.clearsSelectionOnViewWillAppear = NO;
+
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -86,14 +96,15 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [beatTypes count];
+    if (section == 0) return [listOfFourFour count];
+    else return [listOfThreeFour count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,10 +117,15 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [beatTypes objectAtIndex:indexPath.row];
+    if (indexPath.section == 0) {
+        cell.textLabel.text = [listOfFourFour objectAtIndex:indexPath.row];
+    } else if (indexPath.section == 1) {
+        cell.textLabel.text = [listOfThreeFour objectAtIndex:indexPath.row];
+    }
     
-    if (indexPath.row <= 1)
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (indexPath.section == checkedSection && indexPath.row == checkedRow)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
 }
@@ -155,21 +171,27 @@
 
 #pragma mark - Table view delegate
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if(section == 0)
+        return @"4/4 beats";
+    else 
+        return @"3/4 beats";
+}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row) { 
-        case 0: {
-            FourFourBeats *fourFourViewController = [[FourFourBeats alloc] init];            
-            [self.navigationController pushViewController:fourFourViewController animated:YES];
-            break;
-        }
-        case 1: {
-            ThreeFourBeats *threeFourViewController = [[ThreeFourBeats alloc] init];            
-            [self.navigationController pushViewController:threeFourViewController animated:YES];
-            break;
-        }
-        default: break;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    
+    if (section != checkedSection || row != checkedRow) {
+        checkedSection = section;
+        checkedRow = row;
     }
+    
+    [tableView reloadData];
+
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

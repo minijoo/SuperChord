@@ -12,23 +12,32 @@
 #import "UISequenceView.h"
 #import "UITouchView.h"
 #import "BeatViewController.h"
+#import "InstrumentViewController.h"
 
 @interface ViewController : UIViewController
 { 
+    
     @private
     int numTaps;
     UIButton *buttonDragged;
     BOOL exited;
     bool box[5];
     int currentBox;
+    double SPB;
 }
 
+@property (nonatomic, retain) NSMutableArray *savedFiles;
 @property (nonatomic, retain) IBOutlet UIButton *popButton;
 @property (nonatomic, retain) UIPopoverController *popoverController;
 @property (nonatomic, retain) id detailItem;
+@property (nonatomic, retain) id instrumentItem;
+@property (nonatomic, retain) id savedItem;
+@property (nonatomic, retain) BeatViewController *bvc;
+@property (nonatomic, retain) InstrumentViewController *ivc;
 @property (weak, nonatomic) IBOutlet UITableView *beatsTableView;
 @property (weak, nonatomic) IBOutlet UITableView *instrumentsTableView;
 @property (weak, nonatomic) IBOutlet UISwitch *metroSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *loadButton;
 
 @property (strong) AVAudioPlayer *beatPlayer;
 @property (nonatomic, strong) IBOutlet UILabel *feedbackLabel;
@@ -91,6 +100,7 @@
 // IBOutlet is needed to associate properties in your application with components in Interface Builder (IB)
 -(IBAction)showVariations:(id)sender;
 -(IBAction)metroSwitched:(id)sender;
+- (IBAction)tempoSliderValueChanged:(id)sender;
 -(IBAction)buttonTriggered:(id)sender;
 -(IBAction)sliderChanged:(id)sender;
 -(IBAction)beatButtonTriggered:(id)sender;

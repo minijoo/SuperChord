@@ -10,8 +10,10 @@
 
 @interface BeatViewController : UITableViewController {
     
-    NSMutableArray *beatTypes;
-    
+    NSInteger checkedSection, checkedRow;
+    NSMutableArray *listOfFourFour;
+    NSMutableArray *listOfThreeFour;
+    UINavigationController *navigationController;
 }
 
 

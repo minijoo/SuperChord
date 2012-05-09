@@ -25,6 +25,7 @@
 @property (nonatomic, retain) UIPopoverController *popoverController;
 
 -(void) initialize;
+-(void) loadSequence: (NSMutableArray *)seq;
 -(NSString *) getTitleOfCurrentChord;
 -(IBAction)buttonTapped:(id)sender;
 -(void) addChord: (NSInteger)chordTag;

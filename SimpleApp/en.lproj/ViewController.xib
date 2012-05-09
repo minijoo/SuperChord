@@ -838,7 +838,7 @@
 					<object class="IBUISlider" id="593591428">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{418, 104}, {243, 23}}</string>
+						<string key="NSFrame">{{400, 104}, {261, 23}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="48351095"/>
@@ -846,12 +846,14 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<float key="IBUIValue">0.5</float>
+						<float key="IBUIValue">120</float>
+						<float key="IBUIMinValue">40</float>
+						<float key="IBUIMaxValue">300</float>
 					</object>
 					<object class="IBUILabel" id="890055357">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{357, 99}, {82, 32}}</string>
+						<string key="NSFrame">{{348, 99}, {82, 32}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="593591428"/>
@@ -860,7 +862,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Tempo</string>
+						<string key="IBUIText">BPM</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -1197,6 +1199,14 @@
 						<reference key="destination" ref="161656137"/>
 					</object>
 					<int key="connectionID">348</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">loadButton</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="66295762"/>
+					</object>
+					<int key="connectionID">352</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -1608,6 +1618,33 @@
 					</object>
 					<int key="connectionID">344</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">saveTriggered:</string>
+						<reference key="source" ref="48351095"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">350</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">loadTriggered:</string>
+						<reference key="source" ref="66295762"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">351</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">tempoSliderValueChanged:</string>
+						<reference key="source" ref="593591428"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">349</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1641,13 +1678,13 @@
 							<reference ref="48351095"/>
 							<reference ref="66295762"/>
 							<reference ref="488355279"/>
-							<reference ref="890055357"/>
 							<reference ref="593591428"/>
 							<reference ref="161656137"/>
 							<reference ref="560767997"/>
 							<reference ref="973674737"/>
 							<reference ref="335448466"/>
 							<reference ref="20049145"/>
+							<reference ref="890055357"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -2088,7 +2125,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">348</int>
+			<int key="maxID">352</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2129,6 +2166,7 @@
 						<string key="showVariations:">id</string>
 						<string key="sliderChanged:">id</string>
 						<string key="stopButtonTriggered:">id</string>
+						<string key="tempoSliderValueChanged:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="beatButtonTriggered:">
@@ -2153,6 +2191,10 @@
 						</object>
 						<object class="IBActionInfo" key="stopButtonTriggered:">
 							<string key="name">stopButtonTriggered:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="tempoSliderValueChanged:">
+							<string key="name">tempoSliderValueChanged:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -2185,6 +2227,8 @@
 						<string key="gsChord">UIButton</string>
 						<string key="gsmChord">UIButton</string>
 						<string key="instrumentsTableView">UITableView</string>
+						<string key="loadButton">UIButton</string>
+						<string key="metroSwitch">UISwitch</string>
 						<string key="popButton">UIButton</string>
 						<string key="seqView">UISequenceView</string>
 						<string key="touchView">UITouchView</string>
@@ -2302,6 +2346,14 @@
 						<object class="IBToOneOutletInfo" key="instrumentsTableView">
 							<string key="name">instrumentsTableView</string>
 							<string key="candidateClassName">UITableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="loadButton">
+							<string key="name">loadButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="metroSwitch">
+							<string key="name">metroSwitch</string>
+							<string key="candidateClassName">UISwitch</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="popButton">
 							<string key="name">popButton</string>

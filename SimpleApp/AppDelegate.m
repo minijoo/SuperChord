@@ -74,7 +74,7 @@
 		// start realtime MIDI
 		err = api->start (handle);
 	}
-    api->setChannelMessage (handle, 0x00, 0xC0, 25, 0);
+    api->setChannelMessage (handle, 0x00, 0xC0, 0, 0);
     api->setChannelMessage (handle, 0x00, 0xC1, 116, 40);
 
 }

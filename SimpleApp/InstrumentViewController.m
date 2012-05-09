@@ -1,14 +1,16 @@
 //
-//  ThreeFourBeats.m
+//  InstrumentViewController.m
 //  SimpleApp
 //
 //  Created by Music2 on 5/9/12.
 //  Copyright (c) 2012 Tufts University. All rights reserved.
 //
 
-#import "ThreeFourBeats.h"
+#import "InstrumentViewController.h"
+#import "ViewController.h"
+#import "AppDelegate.h"
 
-@implementation ThreeFourBeats
+@implementation InstrumentViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,6 +33,10 @@
 
 - (void)viewDidLoad
 {
+    listOfInstruments = [[NSMutableArray alloc] init];
+    [listOfInstruments addObject:@"Piano"];
+    [listOfInstruments addObject:@"Guitar"];
+    
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -75,18 +81,25 @@
 
 #pragma mark - Table view data source
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if(section == 0)
+        return @"Instruments";
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [listOfInstruments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,6 +112,13 @@
     }
     
     // Configure the cell...
+    cell.textLabel.text = [listOfInstruments objectAtIndex:indexPath.row];
+    
+    if (indexPath.row == checkedData)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else 
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    NSLog(@"Checked");
     
     return cell;
 }
@@ -146,6 +166,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger data = indexPath.row;
+    
+    if (data != checkedData) {
+        checkedData = data;
+    }
+    
+    [tableView reloadData];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.viewController.instrumentItem = [listOfInstruments objectAtIndex:indexPath.row];
+
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

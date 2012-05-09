@@ -38,6 +38,66 @@ static NSInteger susScale[5] = {0, 5, 7, 12, 17};
 
 @synthesize sequenceButtons, sequence, player, clearButton, popoverController;
 
+-(NSString *) notatedVariation:(NSString *)variation /* Returns the notation of the variation */
+{   
+    NSLog(@"varitation in function: %@", variation);
+    if (variation == @"major") return @"";
+    else if (variation == @"minor") return @"m";
+    else if (variation == @"7") return @"7";
+    else if (variation == @"maj7") return @"M7";
+    else if (variation == @"m7") return @"m7";
+    else if (variation == @"9") return @"9";
+    else if (variation == @"maj9") return @"M9";
+    else if (variation == @"m9") return @"m9";
+    else if (variation == @"6") return @"6";
+    else if (variation == @"m6") return @"m6";
+    else if (variation == @"sus4") return @"sus4";
+    else return @"";
+}
+
+-(void)loadSequence:(NSMutableArray *)seq 
+{
+    [sequence removeAllObjects];
+    [sequence addObjectsFromArray:seq];
+    [sequenceButtons removeAllObjects];
+    if ([sequence count] > 0) currentIndex = 0;
+    else currentIndex = -1;
+    
+    for (int i=0; i<[sequence count]; i++) {
+        Chord *chord = [sequence objectAtIndex:i];
+        UIColor *buttonColor = [UIColor blackColor];
+        if (i == currentIndex) buttonColor = [UIColor redColor];
+        
+        /* Configure new button */
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button.tag = i;
+        if (i == 0) 
+            button.frame = CGRectMake(ORIGIN_X, ORIGIN_Y, B_WIDTH, B_HEIGHT);
+        else if ([[sequenceButtons lastObject] frame].origin.x + B_WIDTH < V_WIDTH - 100) 
+            button.frame = CGRectMake(B_HSPACE + [[sequenceButtons lastObject] frame].origin.x + B_WIDTH, [[sequenceButtons lastObject] frame].origin.y, B_WIDTH, B_HEIGHT);
+        else // No more space
+            button.frame = CGRectMake(ORIGIN_X, [[sequenceButtons lastObject] frame].origin.y + B_HEIGHT + B_VSPACE, B_WIDTH, B_HEIGHT);
+        
+        NSString *var = [self notatedVariation: chord.variation];
+        NSString *base = chromaticScale[chord.number];
+        NSLog(@"title and var: %@ %@", chord.title, chord.variation);
+        [button setTitle: [base stringByAppendingString:var] forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        [button setTitleColor:buttonColor forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+        /* Add gesture recognizer for long-presses */
+        UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        [button addGestureRecognizer:longPressGestureRecognizer];
+        
+        [sequenceButtons addObject:button];
+        NSLog(@"sequence count == %d", [sequence count]);
+        NSLog(@"sequenceButtons count == %d", [sequenceButtons count]);
+        [self addSubview:button];
+
+    }
+}
+
 - (void)noteOff2:(NSNumber *)note
 {
 	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -364,21 +424,7 @@ static NSInteger susScale[5] = {0, 5, 7, 12, 17};
     return [[sequence objectAtIndex:currentIndex] title];
 }
 
--(NSString *) notatedVariation:(NSString *)variation /* Returns the notation of the variation */
-{
-    if (variation == @"major") return @"";
-    else if (variation == @"minor") return @"m";
-    else if (variation == @"7") return @"7";
-    else if (variation == @"maj7") return @"M7";
-    else if (variation == @"m7") return @"m7";
-    else if (variation == @"9") return @"9";
-    else if (variation == @"maj9") return @"M9";
-    else if (variation == @"m9") return @"m9";
-    else if (variation == @"6") return @"6";
-    else if (variation == @"m6") return @"m6";
-    else if (variation == @"sus4") return @"sus4";
-    else return @"*";
-}
+
 
 
 -(IBAction)buttonTapped:(id)sender

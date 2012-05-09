@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "VariationViewController.h"
+#import "SavedProgressionsViewController.h"
 #define TV_WIDTH 309
 #define TV_HEIGHT 330
 #define BOX_HEIGHT 50
@@ -19,7 +20,8 @@
 @synthesize beatsTableView;
 @synthesize instrumentsTableView;
 @synthesize metroSwitch;
-@synthesize popButton, popoverController, detailItem;
+@synthesize loadButton;
+@synthesize popButton, popoverController, detailItem, bvc, ivc, instrumentItem, savedFiles;
 
 @synthesize beatPlayer, feedbackLabel, volumeLabel, chordBankView, seqView, touchView;
 @synthesize cChord, cmChord, csChord, csmChord, dChord, dmChord, dsChord, dsmChord, eChord, emChord, fChord, fmChord, fsChord, fsmChord, gChord, gmChord, gsChord, gsmChord, aChord, amChord, bflChord, bflmChord, bChord, bmChord;
@@ -28,6 +30,39 @@
 
 // IBAction is used to allow your methods to be associated with actions in IB
 // Moar: http://stackoverflow.com/questions/1643007/iboutlet-and-ibaction
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{ 
+    if (buttonIndex == 0) {
+        NSLog(@"Entered: %@",[[alertView textFieldAtIndex:0] text]);
+        NSString *title = [[alertView textFieldAtIndex:0] text];
+        [savedFiles addObject:title];
+        NSString *archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.archive", title]];
+        [NSKeyedArchiver archiveRootObject:[seqView sequence] toFile:archivePath];
+        NSLog(@"varitaotin %@", [[[seqView sequence] objectAtIndex:1] variation]);
+        NSLog(@"savedFiles contents: %@", savedFiles);
+    }
+}
+
+-(IBAction)saveTriggered:(id)sender {
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Progression Title" message:@"Please enter progression title:" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:@"Cancel", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeDefault;
+    alertTextField.placeholder = @"Progression name";
+    [alert show];
+}
+
+-(IBAction)loadTriggered:(id)sender {
+    CGRect rect = loadButton.frame;
+    SavedProgressionsViewController *savedProgressions = [[SavedProgressionsViewController alloc] init];
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:savedProgressions]; 
+    [popover setPopoverContentSize:CGSizeMake(400, 500) animated:YES];
+    popover.delegate = self;
+    self.popoverController = popover;
+    rect.size.width = MIN(rect.size.width, 100); 
+    [popover presentPopoverFromRect:rect inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
 
 - (void)setDetailItem:(id)newDetailItem {
     
@@ -42,6 +77,39 @@
         [popoverController dismissPopoverAnimated:YES];
     }        
     
+}
+
+- (void)setInstrumentItem:(id)newInstrumentItem {
+    
+    if (instrumentItem != newInstrumentItem) {
+        //[detailItem release];
+        instrumentItem = newInstrumentItem;
+        
+        //---update the view---
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        if (instrumentItem == @"Piano")
+            appDelegate.api->setChannelMessage (appDelegate.handle, 0x00, 0xC0, 0, 0);
+        else if (instrumentItem == @"Guitar")
+            appDelegate.api->setChannelMessage (appDelegate.handle, 0x00, 0xC0, 25, 0);
+    }
+}
+
+- (void)setSavedItem:(id)newSavedItem {
+    NSLog(@"selected progression title: %@", newSavedItem);
+    NSMutableArray *seq;
+    NSString *archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.archive", newSavedItem]];
+    seq = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
+    NSLog(@"sequence retrieved: %@", seq);
+    NSLog(@"random variation: %@ and title %@", [[seq objectAtIndex:1] variation], [[seq objectAtIndex:1] title]);
+    [seqView loadSequence:seq];
+}
+
+- (IBAction)tempoSliderValueChanged:(id)sender
+{
+    UISlider *slider = (UISlider *) sender;
+    int BPM = (int)slider.value;
+    SPB = 1.0/(BPM/60.0);
+    NSLog(@"Tempo set to %d BPM or %f SPB", BPM, SPB);
 }
 
 -(IBAction) showVariations:(id) sender {
@@ -66,8 +134,8 @@
 -(void) playTick:(id) nothing 
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-	appDelegate.api->setChannelMessage (appDelegate.handle, 0x00, 0x91, 90, 40);
-    [self performSelector:@selector(playTick:) withObject:nil afterDelay:.9];
+	appDelegate.api->setChannelMessage (appDelegate.handle, 0x00, 0x91, 110, 90);
+    [self performSelector:@selector(playTick:) withObject:nil afterDelay:SPB];
 }
 
 - (IBAction) metroSwitched:(id) sender
@@ -75,8 +143,8 @@
     NSLog(@"Metro switched");
     if(metroSwitch.on) {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        appDelegate.api->setChannelMessage (appDelegate.handle, 0x00, 0x91, 90, 40);
-        [self performSelector:@selector(playTick:) withObject:nil afterDelay:.9];
+        appDelegate.api->setChannelMessage (appDelegate.handle, 0x00, 0x91, 110, 90);
+        [self performSelector:@selector(playTick:) withObject:nil afterDelay:SPB];
     }
     else {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
@@ -303,6 +371,19 @@
 
 - (void)viewDidLoad
 {    
+   
+    savedFiles = [[NSMutableArray alloc] init];
+    
+    SPB = 0.5;
+    
+    bvc = [[BeatViewController alloc] init];
+    bvc.tableView = beatsTableView;
+    [bvc viewDidLoad];
+    
+    ivc = [[InstrumentViewController alloc] init];
+    ivc.tableView = instrumentsTableView;
+    [ivc viewDidLoad];
+    
     numTaps = 0; exited = YES; currentBox = -1;
     for (int i=0; i<6; i++) box[i] = NO;
     NSLog(@"loaded");
@@ -400,6 +481,7 @@
     [self setBeatsTableView:nil];
     [self setInstrumentsTableView:nil];
     [self setMetroSwitch:nil];
+    [self setLoadButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3609AD0814E1D8C50049DE07"
                BuildableName = "SimpleApp.app"
-               BlueprintName = "SimpleApp"
+               BlueprintName = "SuperChords"
                ReferencedContainer = "container:SimpleApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,7 +33,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3609AD0814E1D8C50049DE07"
             BuildableName = "SimpleApp.app"
-            BlueprintName = "SimpleApp"
+            BlueprintName = "SuperChords"
             ReferencedContainer = "container:SimpleApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,7 +51,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3609AD0814E1D8C50049DE07"
             BuildableName = "SimpleApp.app"
-            BlueprintName = "SimpleApp"
+            BlueprintName = "SuperChords"
             ReferencedContainer = "container:SimpleApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,7 +69,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3609AD0814E1D8C50049DE07"
             BuildableName = "SimpleApp.app"
-            BlueprintName = "SimpleApp"
+            BlueprintName = "SuperChords"
             ReferencedContainer = "container:SimpleApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

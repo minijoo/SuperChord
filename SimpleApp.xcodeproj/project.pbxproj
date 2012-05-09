@@ -23,8 +23,13 @@
 		E219112B1559990800EF9C4F /* VariationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21911291559990800EF9C4F /* VariationViewController.m */; };
 		E219112C1559990800EF9C4F /* VariationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E219112A1559990800EF9C4F /* VariationView.xib */; };
 		E2730D86155A2E86000EAB04 /* BeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2730D85155A2E86000EAB04 /* BeatViewController.m */; };
-		E2730D89155A3020000EAB04 /* FourFourBeats.m in Sources */ = {isa = PBXBuildFile; fileRef = E2730D88155A3020000EAB04 /* FourFourBeats.m */; };
-		E2730D8C155A302C000EAB04 /* ThreeFourBeats.m in Sources */ = {isa = PBXBuildFile; fileRef = E2730D8B155A302C000EAB04 /* ThreeFourBeats.m */; };
+		E2B10557155AF938001C8CF2 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2B10556155AF938001C8CF2 /* splash.jpg */; };
+		E2B10559155AF95E001C8CF2 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B10558155AF95E001C8CF2 /* splash.png */; };
+		E2B1055B155AF96C001C8CF2 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B1055A155AF96C001C8CF2 /* Default-Landscape~ipad.png */; };
+		E2B8487A155AC7E200AB024F /* InstrumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B84878155AC7E100AB024F /* InstrumentViewController.m */; };
+		E2B8487B155AC7E200AB024F /* InstrumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B84879155AC7E100AB024F /* InstrumentViewController.xib */; };
+		E2B84884155AE63900AB024F /* SavedProgressionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B84882155AE63800AB024F /* SavedProgressionsViewController.m */; };
+		E2B84885155AE63900AB024F /* SavedProgressionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B84883155AE63800AB024F /* SavedProgressionsViewController.xib */; };
 		E2C915E81529524B0016B932 /* Chord.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C915E71529524B0016B932 /* Chord.m */; };
 		E2C915EB15295FF90016B932 /* UISequenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C915EA15295FF90016B932 /* UISequenceView.m */; };
 		E2D2A45F1547487700E83C43 /* crsynth.dlsc in Resources */ = {isa = PBXBuildFile; fileRef = E2D2A4571547487700E83C43 /* crsynth.dlsc */; };
@@ -60,10 +65,15 @@
 		E219112A1559990800EF9C4F /* VariationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VariationView.xib; sourceTree = "<group>"; };
 		E2730D84155A2E86000EAB04 /* BeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeatViewController.h; sourceTree = "<group>"; };
 		E2730D85155A2E86000EAB04 /* BeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeatViewController.m; sourceTree = "<group>"; };
-		E2730D87155A3020000EAB04 /* FourFourBeats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourFourBeats.h; sourceTree = "<group>"; };
-		E2730D88155A3020000EAB04 /* FourFourBeats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourFourBeats.m; sourceTree = "<group>"; };
-		E2730D8A155A302C000EAB04 /* ThreeFourBeats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeFourBeats.h; sourceTree = "<group>"; };
-		E2730D8B155A302C000EAB04 /* ThreeFourBeats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeFourBeats.m; sourceTree = "<group>"; };
+		E2B10556155AF938001C8CF2 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = SOURCE_ROOT; };
+		E2B10558155AF95E001C8CF2 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = SOURCE_ROOT; };
+		E2B1055A155AF96C001C8CF2 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		E2B84877155AC7E100AB024F /* InstrumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentViewController.h; sourceTree = "<group>"; };
+		E2B84878155AC7E100AB024F /* InstrumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentViewController.m; sourceTree = "<group>"; };
+		E2B84879155AC7E100AB024F /* InstrumentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstrumentViewController.xib; sourceTree = "<group>"; };
+		E2B84881155AE63800AB024F /* SavedProgressionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedProgressionsViewController.h; sourceTree = "<group>"; };
+		E2B84882155AE63800AB024F /* SavedProgressionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedProgressionsViewController.m; sourceTree = "<group>"; };
+		E2B84883155AE63800AB024F /* SavedProgressionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedProgressionsViewController.xib; sourceTree = "<group>"; };
 		E2C915E61529524B0016B932 /* Chord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chord.h; sourceTree = "<group>"; };
 		E2C915E71529524B0016B932 /* Chord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chord.m; sourceTree = "<group>"; };
 		E2C915E915295FF90016B932 /* UISequenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISequenceView.h; sourceTree = "<group>"; };
@@ -102,6 +112,7 @@
 		3609ACFE14E1D8C50049DE07 = {
 			isa = PBXGroup;
 			children = (
+				E2B1055A155AF96C001C8CF2 /* Default-Landscape~ipad.png */,
 				E2D2A4541547487700E83C43 /* crsynth */,
 				E20DE5C6152B7A3600270C99 /* rockbeat.mp3 */,
 				3609AD1314E1D8C50049DE07 /* SimpleApp */,
@@ -134,18 +145,22 @@
 		3609AD1314E1D8C50049DE07 /* SimpleApp */ = {
 			isa = PBXGroup;
 			children = (
+				E2B10558155AF95E001C8CF2 /* splash.png */,
+				E2B10556155AF938001C8CF2 /* splash.jpg */,
 				3609AD1C14E1D8C50049DE07 /* AppDelegate.h */,
 				3609AD1D14E1D8C50049DE07 /* AppDelegate.m */,
 				E2C915E61529524B0016B932 /* Chord.h */,
 				E2C915E71529524B0016B932 /* Chord.m */,
 				3609AD1F14E1D8C50049DE07 /* ViewController.h */,
 				3609AD2014E1D8C50049DE07 /* ViewController.m */,
+				E2B84881155AE63800AB024F /* SavedProgressionsViewController.h */,
+				E2B84882155AE63800AB024F /* SavedProgressionsViewController.m */,
+				E2B84883155AE63800AB024F /* SavedProgressionsViewController.xib */,
+				E2B84877155AC7E100AB024F /* InstrumentViewController.h */,
+				E2B84878155AC7E100AB024F /* InstrumentViewController.m */,
+				E2B84879155AC7E100AB024F /* InstrumentViewController.xib */,
 				E2730D84155A2E86000EAB04 /* BeatViewController.h */,
 				E2730D85155A2E86000EAB04 /* BeatViewController.m */,
-				E2730D8A155A302C000EAB04 /* ThreeFourBeats.h */,
-				E2730D8B155A302C000EAB04 /* ThreeFourBeats.m */,
-				E2730D87155A3020000EAB04 /* FourFourBeats.h */,
-				E2730D88155A3020000EAB04 /* FourFourBeats.m */,
 				E2C915E915295FF90016B932 /* UISequenceView.h */,
 				E2C915EA15295FF90016B932 /* UISequenceView.m */,
 				E21911281559990800EF9C4F /* VariationViewController.h */,
@@ -204,9 +219,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3609AD0814E1D8C50049DE07 /* SimpleApp */ = {
+		3609AD0814E1D8C50049DE07 /* SuperChords */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3609AD2714E1D8C50049DE07 /* Build configuration list for PBXNativeTarget "SimpleApp" */;
+			buildConfigurationList = 3609AD2714E1D8C50049DE07 /* Build configuration list for PBXNativeTarget "SuperChords" */;
 			buildPhases = (
 				3609AD0514E1D8C50049DE07 /* Sources */,
 				3609AD0614E1D8C50049DE07 /* Frameworks */,
@@ -216,7 +231,7 @@
 			);
 			dependencies = (
 			);
-			name = SimpleApp;
+			name = SuperChords;
 			productName = SimpleApp;
 			productReference = 3609AD0914E1D8C50049DE07 /* SimpleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -242,7 +257,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3609AD0814E1D8C50049DE07 /* SimpleApp */,
+				3609AD0814E1D8C50049DE07 /* SuperChords */,
 			);
 		};
 /* End PBXProject section */
@@ -258,6 +273,11 @@
 				E2D2A45F1547487700E83C43 /* crsynth.dlsc in Resources */,
 				E2D2A4641547487700E83C43 /* sample.mid in Resources */,
 				E219112C1559990800EF9C4F /* VariationView.xib in Resources */,
+				E2B8487B155AC7E200AB024F /* InstrumentViewController.xib in Resources */,
+				E2B84885155AE63900AB024F /* SavedProgressionsViewController.xib in Resources */,
+				E2B10557155AF938001C8CF2 /* splash.jpg in Resources */,
+				E2B10559155AF95E001C8CF2 /* splash.png in Resources */,
+				E2B1055B155AF96C001C8CF2 /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +296,8 @@
 				E20DE5C4152B5B6900270C99 /* UITouchView.m in Sources */,
 				E219112B1559990800EF9C4F /* VariationViewController.m in Sources */,
 				E2730D86155A2E86000EAB04 /* BeatViewController.m in Sources */,
-				E2730D89155A3020000EAB04 /* FourFourBeats.m in Sources */,
-				E2730D8C155A302C000EAB04 /* ThreeFourBeats.m in Sources */,
+				E2B8487A155AC7E200AB024F /* InstrumentViewController.m in Sources */,
+				E2B84884155AE63900AB024F /* SavedProgressionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +414,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3609AD2714E1D8C50049DE07 /* Build configuration list for PBXNativeTarget "SimpleApp" */ = {
+		3609AD2714E1D8C50049DE07 /* Build configuration list for PBXNativeTarget "SuperChords" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3609AD2814E1D8C50049DE07 /* Debug */,

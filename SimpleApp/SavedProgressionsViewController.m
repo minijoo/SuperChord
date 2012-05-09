@@ -1,14 +1,16 @@
 //
-//  FourFourBeats.m
+//  SavedProgressionsViewController.m
 //  SimpleApp
 //
 //  Created by Music2 on 5/9/12.
 //  Copyright (c) 2012 Tufts University. All rights reserved.
 //
 
-#import "FourFourBeats.h"
+#import "SavedProgressionsViewController.h"
+#import "AppDelegate.h"
+#import "ViewController.h"
 
-@implementation FourFourBeats
+@implementation SavedProgressionsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,6 +33,10 @@
 
 - (void)viewDidLoad
 {
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    listOfSavedProgressions = [[NSMutableArray alloc] init];
+    [listOfSavedProgressions addObjectsFromArray:appDelegate.viewController.savedFiles];
+    
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -79,14 +85,14 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [listOfSavedProgressions count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,7 +105,8 @@
     }
     
     // Configure the cell...
-    
+    cell.textLabel.text = [listOfSavedProgressions objectAtIndex:indexPath.row];
+
     return cell;
 }
 
@@ -146,6 +153,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.viewController.savedItem = [listOfSavedProgressions objectAtIndex:indexPath.row];
+
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
